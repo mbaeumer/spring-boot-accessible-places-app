@@ -10,6 +10,7 @@
         <version>3.4.0</version>
     </parent>
 
+
     <groupId>se.mbaeumer.solution</groupId>
     <artifactId>accessible-places</artifactId>
     <version>0.0.1</version>
