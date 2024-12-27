@@ -80,5 +80,5 @@ INSERT INTO AppUser(id, name, email, userTypeId) VALUES(1, 'Martin Bäumer', 'mb
 INSERT INTO GoogleRequestType (id, name, code, description)
 VALUES (1, 'Search Request', 'SEARCH', 'A request for performing a search operation.');
 INSERT INTO GoogleRequest (id, payload, executionTime, requestTypeId, userId)
-VALUES (1, 'Search for restaurants in New York', '2024-12-11 14:30:00', 1, 1);
+VALUES (0, 'Search for restaurants in New York', '2024-12-11 14:30:00', 1, 1);
 
