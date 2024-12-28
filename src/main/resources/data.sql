@@ -81,4 +81,6 @@ INSERT INTO GoogleRequestType (id, name, code, description)
 VALUES (1, 'Search Request', 'SEARCH', 'A request for performing a search operation.');
 INSERT INTO GoogleRequest (id, payload, executionTime, requestTypeId, userId)
 VALUES (0, 'Search for restaurants in New York', '2024-12-11 14:30:00', 1, 1);
+INSERT INTO HotSpot(id, name, address, googleApiCode, userId)
+VALUES(0, 'My fake hotspot', 'My fake address 21', 'api-code-123', 1);
 
