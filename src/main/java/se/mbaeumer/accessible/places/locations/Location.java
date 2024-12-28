@@ -51,4 +51,109 @@ public class Location {
     private String accessibleRestRoom;
 
     // Getters and Setters
+
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getBusinessStatus() {
+        return businessStatus;
+    }
+
+    public void setBusinessStatus(String businessStatus) {
+        this.businessStatus = businessStatus;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getFormattedAddress() {
+        return formattedAddress;
+    }
+
+    public void setFormattedAddress(String formattedAddress) {
+        this.formattedAddress = formattedAddress;
+    }
+
+    public String getGoogleApiCode() {
+        return googleApiCode;
+    }
+
+    public void setGoogleApiCode(String googleApiCode) {
+        this.googleApiCode = googleApiCode;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    public Timestamp getCreated() {
+        return created;
+    }
+
+    public void setCreated(Timestamp created) {
+        this.created = created;
+    }
+
+    public Timestamp getLastUpdated() {
+        return lastUpdated;
+    }
+
+    public void setLastUpdated(Timestamp lastUpdated) {
+        this.lastUpdated = lastUpdated;
+    }
+
+    public AppUser getUser() {
+        return user;
+    }
+
+    public void setUser(AppUser user) {
+        this.user = user;
+    }
+
+    public String getAccessibleEntrance() {
+        return accessibleEntrance;
+    }
+
+    public void setAccessibleEntrance(String accessibleEntrance) {
+        this.accessibleEntrance = accessibleEntrance;
+    }
+
+    public String getAccessibleSeating() {
+        return accessibleSeating;
+    }
+
+    public void setAccessibleSeating(String accessibleSeating) {
+        this.accessibleSeating = accessibleSeating;
+    }
+
+    public String getAccessibleRestRoom() {
+        return accessibleRestRoom;
+    }
+
+    public void setAccessibleRestRoom(String accessibleRestRoom) {
+        this.accessibleRestRoom = accessibleRestRoom;
+    }
 }
