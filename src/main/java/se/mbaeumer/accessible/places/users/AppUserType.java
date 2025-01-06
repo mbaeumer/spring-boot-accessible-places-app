@@ -22,4 +22,37 @@ public class AppUserType {
     private List<AppUser> appUsers;
 
     // Getters and Setters
+
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<AppUser> getAppUsers() {
+        return appUsers;
+    }
+
+    public void setAppUsers(List<AppUser> appUsers) {
+        this.appUsers = appUsers;
+    }
 }
