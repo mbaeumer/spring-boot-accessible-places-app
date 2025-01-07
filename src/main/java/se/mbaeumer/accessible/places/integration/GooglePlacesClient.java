@@ -11,4 +11,6 @@ public interface GooglePlacesClient {
 
     Mono<String> textSearch(String text);
 
+    Mono<String> nearbySearch(NearBySearchRequest nearBySearchRequest);
+
 }

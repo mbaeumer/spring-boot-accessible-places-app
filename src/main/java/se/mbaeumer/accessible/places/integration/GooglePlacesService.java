@@ -22,4 +22,15 @@ public class GooglePlacesService {
         System.out.println("response: " + block);
         return block;
     }
+
+    public String runNearBySearch(){
+        String longitude="11.961514099999999";
+        String latitude="57.707975999999995";
+        String radius="500";
+
+        NearBySearchRequest nearBy = new NearBySearchRequest(longitude, latitude, radius, 20, new String[]{"restaurant"});
+
+        Mono<String> stringMono = googlePlacesClient.nearbySearch(nearBy);
+        return stringMono.block();
+    }
 }

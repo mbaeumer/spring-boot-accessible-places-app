@@ -23,4 +23,9 @@ public class TestGooglePlacesClient implements GooglePlacesClient{
     public Mono<String> textSearch(String text) {
         return null;
     }
+
+    @Override
+    public Mono<String> nearbySearch(NearBySearchRequest nearBySearchRequest) {
+        return null;
+    }
 }

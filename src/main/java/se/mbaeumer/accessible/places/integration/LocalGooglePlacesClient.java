@@ -62,4 +62,47 @@ public class LocalGooglePlacesClient implements GooglePlacesClient{
                 .bodyToMono(String.class)
                 .onErrorResume(WebClientResponseException.class, e -> Mono.error(new RuntimeException("Error during text search", e)));
     }
+
+    public Mono<String> nearbySearch(NearBySearchRequest nearBySearchRequest) {
+        String requestBody = String.format("""
+            {
+                \"includedTypes\": %s,
+                \"maxResultCount\": %d,
+                \"locationRestriction\": {
+                    \"circle\": {
+                        \"center\": {
+                            \"latitude\": %s,
+                            \"longitude\": %s
+                        },
+                        \"radius\": %s
+                    }
+                }
+            }
+            """,
+                toJsonArray(nearBySearchRequest.getIncludeTypes()), nearBySearchRequest.getMaxResults(),
+                nearBySearchRequest.getLatitude(), nearBySearchRequest.getLongitude(), nearBySearchRequest.getRadius());
+
+        System.out.println("request body: " + requestBody);
+        return webClient.post()
+                .uri("/places:searchNearby")
+                .header("X-Goog-Api-Key", fetchApiKey())
+                .header("X-Goog-FieldMask", "places.id,places.displayName,places.formattedAddress,places.location,places.accessibilityOptions,places.businessStatus")
+                .header("Content-Type", "application/json")
+                .bodyValue(requestBody)
+                .retrieve()
+                .bodyToMono(String.class)
+                .onErrorResume(WebClientResponseException.class, e -> Mono.error(new RuntimeException("Error during nearby search", e)));
+    }
+
+    private String toJsonArray(String[] array) {
+        StringBuilder jsonArray = new StringBuilder("[");
+        for (int i = 0; i < array.length; i++) {
+            jsonArray.append("\"").append(array[i]).append("\"");
+            if (i < array.length - 1) {
+                jsonArray.append(",");
+            }
+        }
+        jsonArray.append("]");
+        return jsonArray.toString();
+    }
 }

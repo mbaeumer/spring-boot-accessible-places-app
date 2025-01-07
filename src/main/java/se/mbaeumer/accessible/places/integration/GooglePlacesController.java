@@ -13,8 +13,17 @@ public class GooglePlacesController {
         this.googlePlacesService = googlePlacesService;
     }
 
-    @GetMapping("")
+    @GetMapping("/textsearch")
     public String showResponse(){
         return googlePlacesService.runTextSearch();
     }
+
+    @GetMapping("/nearby")
+    public String showNearByResponse(){
+        return googlePlacesService.runNearBySearch();
+    }
+
+
+
+
 }
