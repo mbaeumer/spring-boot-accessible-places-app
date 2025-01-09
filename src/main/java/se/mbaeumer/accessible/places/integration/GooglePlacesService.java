@@ -3,6 +3,8 @@ package se.mbaeumer.accessible.places.integration;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
+import java.io.IOException;
+
 @Service
 public class GooglePlacesService {
     private final GooglePlacesClient googlePlacesClient;
@@ -23,7 +25,7 @@ public class GooglePlacesService {
         return block;
     }
 
-    public String runNearBySearch(){
+    public PlacesResponse runNearBySearch(){
         String longitude="11.961514099999999";
         String latitude="57.707975999999995";
         String radius="500";
@@ -31,6 +33,14 @@ public class GooglePlacesService {
         NearBySearchRequest nearBy = new NearBySearchRequest(longitude, latitude, radius, 20, new String[]{"restaurant"});
 
         Mono<String> stringMono = googlePlacesClient.nearbySearch(nearBy);
-        return stringMono.block();
+        String jsonResponse = stringMono.block();
+        PlacesResponse placesResponse;
+        try {
+            placesResponse = PlacesResponse.fromJson(jsonResponse);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return placesResponse;
+
     }
 }

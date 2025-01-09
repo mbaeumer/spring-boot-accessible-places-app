@@ -20,6 +20,12 @@ public class HotSpot {
     @Column(nullable = false)
     private String googleApiCode;
 
+    @Column(nullable = false)
+    private String latitude;
+
+    @Column(nullable = false)
+    private String longitude;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId")
     private AppUser user;
@@ -56,6 +62,22 @@ public class HotSpot {
 
     public void setGoogleApiCode(String googleApiCode) {
         this.googleApiCode = googleApiCode;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
     }
 
     public AppUser getUser() {
