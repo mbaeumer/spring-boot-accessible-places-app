@@ -14,11 +14,8 @@ public class GooglePlacesService {
     }
 
     public String runTextSearch(){
-        /*
-        String apiKey = googlePlacesClient.fetchApiKey();
-        return apiKey;
-
-         */
+        // TODO: Use parameter instead of hard-coded address
+        // TODO: Map API response to DTO
         Mono<String> stringMono = googlePlacesClient.textSearch("Packhusplatsen 2, Göteborg");
         String block = stringMono.block();
         System.out.println("response: " + block);
@@ -26,6 +23,8 @@ public class GooglePlacesService {
     }
 
     public PlacesResponse runNearBySearch(){
+        // TODO: Use parameter instead of hard-coded address
+
         String longitude="11.961514099999999";
         String latitude="57.707975999999995";
         String radius="500";
