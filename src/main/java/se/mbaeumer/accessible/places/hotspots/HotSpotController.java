@@ -1,9 +1,6 @@
 package se.mbaeumer.accessible.places.hotspots;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,5 +18,10 @@ public class HotSpotController {
     @GetMapping("")
     public List<HotSpotDto> getAllHotSpots(){
         return hotSpotService.getAllHotSpots();
+    }
+
+    @GetMapping("/search")
+    public void searchHotSpots(@RequestParam(name = "query") final String searchTerm){
+        hotSpotService.searchForHotSpot(searchTerm);
     }
 }

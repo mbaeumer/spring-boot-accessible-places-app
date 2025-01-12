@@ -1,6 +1,7 @@
 package se.mbaeumer.accessible.places.hotspots;
 
 import org.springframework.stereotype.Service;
+import se.mbaeumer.accessible.places.integration.GooglePlacesService;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -9,8 +10,11 @@ import java.util.stream.Collectors;
 public class HotSpotService {
     private final HotSpotRepository hotSpotRepository;
 
-    public HotSpotService(HotSpotRepository hotSpotRepository) {
+    private final GooglePlacesService googlePlacesService;
+
+    public HotSpotService(HotSpotRepository hotSpotRepository, GooglePlacesService googlePlacesService) {
         this.hotSpotRepository = hotSpotRepository;
+        this.googlePlacesService = googlePlacesService;
     }
 
     public List<HotSpotDto> getAllHotSpots(){
@@ -19,5 +23,9 @@ public class HotSpotService {
                 .map(HotSpotDto::of)
                 .collect(Collectors.toList());
         return hotSpotDtos;
+    }
+
+    public void searchForHotSpot(String query){
+        googlePlacesService.runTextSearch(query);
     }
 }

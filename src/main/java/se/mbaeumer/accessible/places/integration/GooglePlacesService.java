@@ -13,10 +13,10 @@ public class GooglePlacesService {
         this.googlePlacesClient = googlePlacesClient;
     }
 
-    public String runTextSearch(){
+    public String runTextSearch(String query){
         // TODO: Use parameter instead of hard-coded address
         // TODO: Map API response to DTO
-        Mono<String> stringMono = googlePlacesClient.textSearch("Packhusplatsen 2, Göteborg");
+        Mono<String> stringMono = googlePlacesClient.textSearch(query);
         String block = stringMono.block();
         System.out.println("response: " + block);
         return block;

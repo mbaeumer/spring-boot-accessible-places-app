@@ -15,7 +15,7 @@ public class GooglePlacesController {
 
     @GetMapping("/textsearch")
     public String showResponse(){
-        return googlePlacesService.runTextSearch();
+        return googlePlacesService.runTextSearch("Packhusplatsen 2, Göteborg");
     }
 
     @GetMapping("/nearby")
