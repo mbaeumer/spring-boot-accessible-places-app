@@ -26,7 +26,11 @@ public class HotSpotService {
         return hotSpotDtos;
     }
 
-    public TextSearchResponse searchForHotSpot(String query){
-        return googlePlacesService.runTextSearch(query);
+    public List<HotSpotDto> searchForHotSpot(String query){
+        TextSearchResponse textSearchResponse = googlePlacesService.runTextSearch(query);
+        List<HotSpotDto> hotSpotDtos = textSearchResponse.getPlaces().stream()
+                .map(HotSpotDto::of)
+                .collect(Collectors.toList());
+        return hotSpotDtos;
     }
 }

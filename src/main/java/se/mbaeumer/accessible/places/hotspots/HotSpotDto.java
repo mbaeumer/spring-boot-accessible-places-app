@@ -1,5 +1,6 @@
 package se.mbaeumer.accessible.places.hotspots;
 
+import se.mbaeumer.accessible.places.integration.TextSearchResponse;
 import se.mbaeumer.accessible.places.users.AppUser;
 
 public class HotSpotDto {
@@ -26,6 +27,12 @@ public class HotSpotDto {
         return new HotSpotDto(hotSpot.getId(), hotSpot.getName(), hotSpot.getAddress(), hotSpot.getGoogleApiCode(), hotSpot.getLongitude(), hotSpot.getLatitude());
     }
 
+    public static HotSpotDto of(TextSearchResponse.Place place){
+        return new HotSpotDto(-1, place.getDisplayName().getText(), place.getFormattedAddress(),
+                place.getId(), Double.toString(place.getLocation().getLongitude()),
+                Double.toString(place.getLocation().getLatitude()));
+    }
+
     public Integer getId() {
         return id;
     }
@@ -40,5 +47,21 @@ public class HotSpotDto {
 
     public String getGoogleApiCode() {
         return googleApiCode;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
     }
 }
