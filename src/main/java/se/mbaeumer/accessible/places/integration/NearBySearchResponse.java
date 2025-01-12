@@ -7,14 +7,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.util.List;
 
-public class PlacesResponse {
+public class NearBySearchResponse {
 
     @JsonProperty("places")
     private List<Place> places;
 
-    public static PlacesResponse fromJson(String json) throws IOException {
+    public static NearBySearchResponse fromJson(String json) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-        return objectMapper.readValue(json, PlacesResponse.class);
+        return objectMapper.readValue(json, NearBySearchResponse.class);
     }
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -79,6 +79,6 @@ public class PlacesResponse {
         // Getters and setters
     }
 
-    // Getters and setters for PlacesResponse
+    // Getters and setters for NearBySearchResponse
 }
 

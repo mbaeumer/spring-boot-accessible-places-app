@@ -22,7 +22,7 @@ public class GooglePlacesService {
         return block;
     }
 
-    public PlacesResponse runNearBySearch(){
+    public NearBySearchResponse runNearBySearch(){
         // TODO: Use parameter instead of hard-coded address
 
         String longitude="11.961514099999999";
@@ -33,13 +33,13 @@ public class GooglePlacesService {
 
         Mono<String> stringMono = googlePlacesClient.nearbySearch(nearBy);
         String jsonResponse = stringMono.block();
-        PlacesResponse placesResponse;
+        NearBySearchResponse nearBySearchResponse;
         try {
-            placesResponse = PlacesResponse.fromJson(jsonResponse);
+            nearBySearchResponse = NearBySearchResponse.fromJson(jsonResponse);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return placesResponse;
+        return nearBySearchResponse;
 
     }
 }
