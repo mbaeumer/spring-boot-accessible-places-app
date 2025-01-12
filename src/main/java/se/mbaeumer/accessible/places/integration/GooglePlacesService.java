@@ -13,13 +13,19 @@ public class GooglePlacesService {
         this.googlePlacesClient = googlePlacesClient;
     }
 
-    public String runTextSearch(String query){
+    public TextSearchResponse runTextSearch(String query){
         // TODO: Use parameter instead of hard-coded address
         // TODO: Map API response to DTO
         Mono<String> stringMono = googlePlacesClient.textSearch(query);
-        String block = stringMono.block();
-        System.out.println("response: " + block);
-        return block;
+        String jsonResponse = stringMono.block();
+        TextSearchResponse textSearchResponse;
+        try {
+            textSearchResponse = TextSearchResponse.fromJson(jsonResponse);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        return textSearchResponse;
     }
 
     public NearBySearchResponse runNearBySearch(){

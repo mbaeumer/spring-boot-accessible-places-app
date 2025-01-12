@@ -54,7 +54,7 @@ public class LocalGooglePlacesClient implements GooglePlacesClient{
         return webClient.post()
                 .uri("/places:searchText")
                 .header("X-Goog-Api-Key", fetchApiKey())
-                .header("X-Goog-FieldMask", "places.id,places.displayName,places.formattedAddress,places.viewport,places.location")
+                .header("X-Goog-FieldMask", "places.id,places.displayName,places.formattedAddress,places.location")
                 .header("Content-Type", "application/json")
                 .bodyValue("{" +
                         "\"textQuery\": \"" + textQuery + "\"}" )

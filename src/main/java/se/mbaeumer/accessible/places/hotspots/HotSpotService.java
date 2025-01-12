@@ -2,6 +2,7 @@ package se.mbaeumer.accessible.places.hotspots;
 
 import org.springframework.stereotype.Service;
 import se.mbaeumer.accessible.places.integration.GooglePlacesService;
+import se.mbaeumer.accessible.places.integration.TextSearchResponse;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,7 +26,7 @@ public class HotSpotService {
         return hotSpotDtos;
     }
 
-    public void searchForHotSpot(String query){
-        googlePlacesService.runTextSearch(query);
+    public TextSearchResponse searchForHotSpot(String query){
+        return googlePlacesService.runTextSearch(query);
     }
 }

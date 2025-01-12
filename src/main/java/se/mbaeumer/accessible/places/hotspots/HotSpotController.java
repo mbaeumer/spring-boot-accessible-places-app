@@ -1,6 +1,7 @@
 package se.mbaeumer.accessible.places.hotspots;
 
 import org.springframework.web.bind.annotation.*;
+import se.mbaeumer.accessible.places.integration.TextSearchResponse;
 
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class HotSpotController {
     }
 
     @GetMapping("/search")
-    public void searchHotSpots(@RequestParam(name = "query") final String searchTerm){
-        hotSpotService.searchForHotSpot(searchTerm);
+    public TextSearchResponse searchHotSpots(@RequestParam(name = "query") final String searchTerm){
+        return hotSpotService.searchForHotSpot(searchTerm);
     }
 }
