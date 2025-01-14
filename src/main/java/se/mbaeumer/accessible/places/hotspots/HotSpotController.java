@@ -25,4 +25,9 @@ public class HotSpotController {
         List<HotSpotDto> hotSpotDtos = hotSpotService.searchForHotSpot(searchTerm);
         return hotSpotDtos;
     }
+
+    @PostMapping("")
+    public void createHotSpot(@RequestBody HotSpotDto newHotSpot){
+        hotSpotService.createHotspot(newHotSpot);
+    }
 }

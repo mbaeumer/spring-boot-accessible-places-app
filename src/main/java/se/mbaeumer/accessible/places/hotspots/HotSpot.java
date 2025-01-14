@@ -8,7 +8,7 @@ import se.mbaeumer.accessible.places.users.AppUser;
 public class HotSpot {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @Column(nullable = false)
@@ -86,5 +86,15 @@ public class HotSpot {
 
     public void setUser(AppUser user) {
         this.user = user;
+    }
+
+    public static HotSpot of(HotSpotDto hotSpotDto){
+        HotSpot hotSpot = new HotSpot();
+        hotSpot.setName(hotSpotDto.getName());
+        hotSpot.setAddress(hotSpotDto.getAddress());
+        hotSpot.setGoogleApiCode(hotSpotDto.getGoogleApiCode());
+        hotSpot.setLongitude(hotSpotDto.getLongitude());
+        hotSpot.setLatitude(hotSpotDto.getLatitude());
+        return hotSpot;
     }
 }

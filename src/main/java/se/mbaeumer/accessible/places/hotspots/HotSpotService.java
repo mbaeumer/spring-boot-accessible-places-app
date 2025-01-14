@@ -3,6 +3,7 @@ package se.mbaeumer.accessible.places.hotspots;
 import org.springframework.stereotype.Service;
 import se.mbaeumer.accessible.places.integration.GooglePlacesService;
 import se.mbaeumer.accessible.places.integration.TextSearchResponse;
+import se.mbaeumer.accessible.places.users.AppUser;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,5 +33,13 @@ public class HotSpotService {
                 .map(HotSpotDto::of)
                 .collect(Collectors.toList());
         return hotSpotDtos;
+    }
+
+    public void createHotspot(HotSpotDto hotSpotDto){
+        HotSpot hotSpot = HotSpot.of(hotSpotDto);
+        AppUser appUser = new AppUser();
+        appUser.setId(1);
+        hotSpot.setUser(appUser);
+        HotSpot save = hotSpotRepository.save(hotSpot);
     }
 }
