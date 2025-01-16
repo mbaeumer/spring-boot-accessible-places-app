@@ -1,7 +1,11 @@
 package se.mbaeumer.accessible.places.hotspots;
 
 import jakarta.persistence.*;
+import se.mbaeumer.accessible.places.locations.Location;
+import se.mbaeumer.accessible.places.requesttracking.GoogleRequest;
 import se.mbaeumer.accessible.places.users.AppUser;
+
+import java.util.List;
 
 @Entity
 @Table(name = "HotSpot")
@@ -29,6 +33,9 @@ public class HotSpot {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId")
     private AppUser user;
+
+    @OneToMany(mappedBy = "hotSpot", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Location> locations;
 
     // Getters and Setters
 

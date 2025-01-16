@@ -83,9 +83,11 @@ INSERT INTO GoogleRequest (id, payload, executionTime, requestTypeId, userId)
 VALUES (0, 'Search for restaurants in New York', '2024-12-11 14:30:00', 1, 1);
 INSERT INTO HotSpot(id, name, address, googleApiCode, longitude, latitude, userId)
 VALUES(0, 'Packhusplatsen 2', 'Packhusplatsen 2, 411 13 Göteborg, Sweden', 'api-code-123', '11.961514099999999', '57.707975999999995', 1);
+INSERT INTO HotSpot(id, name, address, googleApiCode, longitude, latitude, userId)
+VALUES(1, 'Gothia Towers', 'Korsvägen 1, 411 13 Göteborg, Sweden', 'api-code-321', '11.961514099999999', '57.707975999999995', 1);
 INSERT INTO Location(id, businessStatus, name, formattedAddress, googleApiCode, latitude, longitude, created, lastUpdated, userId,
-                     accessibleEntrance, accessibleSeating, accessibleRestRoom)
+                     accessibleEntrance, accessibleSeating, accessibleRestRoom, hotspotId)
 VALUES (0, 'ACTIVE','LOCATIONNAME', 'ADDRESS','APICODE','LATITUDE', 'LONGITUDE', '2024-12-11 14:30:00', '2024-12-11 14:33:00', 1,
-        'YES', 'YES', 'YES');
+        'YES', 'YES', 'YES', 0);
 
 

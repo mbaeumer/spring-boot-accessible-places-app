@@ -23,4 +23,13 @@ public class LocationService {
 
         return locationDtos;
     }
+
+    public List<LocationDto> getLocationsForHotspot(String hotspotId){
+        List<Location> locationsByHotSpotId = locationRepository.findByHotSpotId(Integer.parseInt(hotspotId));
+
+        List<LocationDto> locationDtos = locationsByHotSpotId.stream().map(LocationDto::of)
+                .collect(Collectors.toList());
+        return locationDtos;
+
+    }
 }

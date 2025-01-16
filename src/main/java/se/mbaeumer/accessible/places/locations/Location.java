@@ -1,6 +1,7 @@
 package se.mbaeumer.accessible.places.locations;
 
 import jakarta.persistence.*;
+import se.mbaeumer.accessible.places.hotspots.HotSpot;
 import se.mbaeumer.accessible.places.users.AppUser;
 
 import java.sql.Timestamp;
@@ -30,6 +31,10 @@ public class Location {
 
     @Column(nullable = false)
     private String longitude;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "hotspotId")
+    private HotSpot hotSpot;
 
     @Column(nullable = false)
     private Timestamp created;
@@ -155,5 +160,13 @@ public class Location {
 
     public void setAccessibleRestRoom(String accessibleRestRoom) {
         this.accessibleRestRoom = accessibleRestRoom;
+    }
+
+    public HotSpot getHotSpot() {
+        return hotSpot;
+    }
+
+    public void setHotSpot(HotSpot hotSpot) {
+        this.hotSpot = hotSpot;
     }
 }
