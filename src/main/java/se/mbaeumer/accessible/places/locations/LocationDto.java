@@ -1,8 +1,10 @@
 package se.mbaeumer.accessible.places.locations;
 
+import se.mbaeumer.accessible.places.integration.NearBySearchResponse;
 import se.mbaeumer.accessible.places.users.AppUser;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 public class LocationDto {
     private Integer id;
@@ -30,7 +32,9 @@ public class LocationDto {
 
     private String accessibleRestRoom;
 
-    public LocationDto(Integer id, String businessStatus, String name, String formattedAddress, String googleApiCode, String latitude, String longitude, Timestamp created, Timestamp lastUpdated, String accessibleEntrance, String accessibleSeating, String accessibleRestRoom) {
+    public LocationDto(Integer id, String businessStatus, String name, String formattedAddress, String googleApiCode,
+                       String latitude, String longitude, Timestamp created, Timestamp lastUpdated,
+                       String accessibleEntrance, String accessibleSeating, String accessibleRestRoom) {
         this.id = id;
         this.businessStatus = businessStatus;
         this.name = name;
@@ -50,6 +54,15 @@ public class LocationDto {
                 location.getGoogleApiCode(), location.getLatitude(), location.getLongitude(), location.getCreated(),
                 location.getLastUpdated(), location.getAccessibleEntrance(), location.getAccessibleSeating(),
                 location.getAccessibleRestRoom());
+    }
+
+    public static LocationDto of(NearBySearchResponse.Place place){
+        return new LocationDto(-1, place.getBusinessStatus(), place.getDisplayName().getText(),
+                place.getFormattedAddress(), place.getId(), Double.toString(place.getLocation().getLatitude()),
+                Double.toString(place.getLocation().getLongitude()), Timestamp.valueOf(LocalDateTime.now()),
+                Timestamp.valueOf(LocalDateTime.now()), place.getAccessibilityOptions().getWheelchairAccessibleEntrance(),
+                place.getAccessibilityOptions().getWheelchairAccessibleSeating(), place.getAccessibilityOptions().getWheelchairAccessibleRestroom());
+
     }
 
     public Integer getId() {

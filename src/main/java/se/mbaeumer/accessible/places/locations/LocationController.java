@@ -26,8 +26,9 @@ public class LocationController {
         return locationService.getLocationsForHotspot(hotspotId);
     }
 
-    //@PostMapping("hotspot")
-    public void getLocationsFromApi(@RequestBody HotSpotDto hotSpotDto){
-
+    @PostMapping("/sync")
+    public List<LocationDto> getLocationsFromApi(@RequestBody HotSpotDto hotSpotDto){
+        System.out.println("Hotspot data: " + hotSpotDto.getLatitude());
+        return locationService.getLocationsFromApi(hotSpotDto);
     }
 }

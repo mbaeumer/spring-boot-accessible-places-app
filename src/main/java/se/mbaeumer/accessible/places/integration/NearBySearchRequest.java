@@ -1,5 +1,7 @@
 package se.mbaeumer.accessible.places.integration;
 
+import se.mbaeumer.accessible.places.hotspots.HotSpotDto;
+
 public class NearBySearchRequest {
     private String longitude;
 
@@ -17,6 +19,12 @@ public class NearBySearchRequest {
         this.radius = radius;
         this.maxResults = maxResults;
         this.includeTypes = includeTypes;
+    }
+
+    public static NearBySearchRequest from(HotSpotDto hotSpotDto){
+        NearBySearchRequest request = new NearBySearchRequest(hotSpotDto.getLongitude(), hotSpotDto.getLatitude(),
+                "500", 20, new String[]{"restaurant"});
+        return request;
     }
 
     public String getLongitude() {

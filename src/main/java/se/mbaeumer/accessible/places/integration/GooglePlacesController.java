@@ -20,7 +20,7 @@ public class GooglePlacesController {
 
     @GetMapping("/nearby")
     public NearBySearchResponse showNearByResponse(){
-        return googlePlacesService.runNearBySearch();
+        return googlePlacesService.runNearBySearch(null);
     }
 
 
