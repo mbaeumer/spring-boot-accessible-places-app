@@ -1,13 +1,11 @@
 package se.mbaeumer.accessible.places.requesttracking;
 
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import se.mbaeumer.accessible.places.users.AppUser;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 @Service
@@ -28,7 +26,6 @@ public class GoogleRequestService {
         return googleRequestDtos;
     }
 
-    @Scheduled(timeUnit = TimeUnit.MINUTES, fixedRate = 1, initialDelay = 0)
     public void trackRequest(){
         AppUser appUser = new AppUser();
         appUser.setId(1);
