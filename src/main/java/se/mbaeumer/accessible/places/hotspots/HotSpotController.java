@@ -22,8 +22,7 @@ public class HotSpotController {
 
     @GetMapping("/search")
     public List<HotSpotDto> searchHotSpots(@RequestParam(name = "query") final String searchTerm){
-        List<HotSpotDto> hotSpotDtos = hotSpotService.searchForHotSpot(searchTerm);
-        return hotSpotDtos;
+        return hotSpotService.searchForHotSpot(searchTerm);
     }
 
     @PostMapping("")
