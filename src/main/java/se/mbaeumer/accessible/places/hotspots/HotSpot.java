@@ -2,7 +2,6 @@ package se.mbaeumer.accessible.places.hotspots;
 
 import jakarta.persistence.*;
 import se.mbaeumer.accessible.places.locations.Location;
-import se.mbaeumer.accessible.places.requesttracking.GoogleRequest;
 import se.mbaeumer.accessible.places.users.AppUser;
 
 import java.util.List;
@@ -36,8 +35,6 @@ public class HotSpot {
 
     @OneToMany(mappedBy = "hotSpot", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Location> locations;
-
-    // Getters and Setters
 
     public Integer getId() {
         return id;
