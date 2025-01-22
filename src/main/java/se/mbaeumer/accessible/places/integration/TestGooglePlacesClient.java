@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 @Service
-@Profile("test")
+//@Profile("test")
 public class TestGooglePlacesClient implements GooglePlacesClient{
 
     private final GooglePlacesConfiguration googlePlacesConfiguration;
