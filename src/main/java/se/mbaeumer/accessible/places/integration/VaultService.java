@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 @Service
 @Profile("!dev")
 public class VaultService {
-    @Value("${azure.keyvault.places-api-key}")
+    @Value("${places.api.key}")
     private String mySecret;
 
     @PostConstruct
