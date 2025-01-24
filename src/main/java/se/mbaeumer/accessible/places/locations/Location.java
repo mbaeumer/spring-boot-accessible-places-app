@@ -5,13 +5,14 @@ import se.mbaeumer.accessible.places.hotspots.HotSpot;
 import se.mbaeumer.accessible.places.users.AppUser;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "Location")
 public class Location {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @Column(nullable = false)
@@ -168,5 +169,25 @@ public class Location {
 
     public void setHotSpot(HotSpot hotSpot) {
         this.hotSpot = hotSpot;
+    }
+
+    public static Location of (CreateLocationDto createLocationDto){
+        Location location = new Location();
+        location.setAccessibleSeating(createLocationDto.getAccessibleSeating());
+        location.setAccessibleEntrance(createLocationDto.getAccessibleEntrance());
+        location.setAccessibleRestRoom(createLocationDto.getAccessibleRestRoom());
+        location.setGoogleApiCode(createLocationDto.getGoogleApiCode());
+        location.setBusinessStatus("ACTIVE");
+        location.setFormattedAddress(createLocationDto.getFormattedAddress());
+        location.setName(createLocationDto.getName());
+        location.setLongitude("");
+        location.setLatitude("");
+        location.setCreated(Timestamp.valueOf(LocalDateTime.now()));
+        location.setLastUpdated(Timestamp.valueOf(LocalDateTime.now()));
+
+        HotSpot hotSpot1 = new HotSpot();
+        hotSpot1.setId(Integer.parseInt(createLocationDto.getHotspotId()));
+        location.setHotSpot(hotSpot1);
+        return location;
     }
 }

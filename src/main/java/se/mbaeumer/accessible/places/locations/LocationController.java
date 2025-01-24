@@ -31,4 +31,12 @@ public class LocationController {
         System.out.println("Hotspot data: " + hotSpotDto.getLatitude());
         return locationService.getLocationsFromApi(hotSpotDto);
     }
+
+    @PostMapping("")
+    public void saveLocation(@RequestBody CreateLocationDto createLocationDto){
+        System.out.println("Hotspot data: " + createLocationDto.getHotspotId());
+        locationService.createLocation(createLocationDto);
+    }
+
+
 }

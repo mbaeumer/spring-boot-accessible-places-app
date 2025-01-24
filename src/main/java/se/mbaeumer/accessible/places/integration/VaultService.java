@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 @Service
-@Profile("!dev")
+//@Profile("test")
 public class VaultService {
     @Value("${places.api.key}")
     private String mySecret;

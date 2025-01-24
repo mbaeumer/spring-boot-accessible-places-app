@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import se.mbaeumer.accessible.places.hotspots.HotSpotDto;
 import se.mbaeumer.accessible.places.integration.GooglePlacesService;
 import se.mbaeumer.accessible.places.integration.NearBySearchResponse;
+import se.mbaeumer.accessible.places.users.AppUser;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -44,5 +45,13 @@ public class LocationService {
         List<LocationDto> locationDtos = nearBySearchResponse.getPlaces().stream()
                 .map(LocationDto::of).collect(Collectors.toList());
         return locationDtos;
+    }
+
+    public void createLocation(CreateLocationDto createLocationDto){
+        Location location = Location.of(createLocationDto);
+        AppUser appUser = new AppUser();
+        appUser.setId(1);
+        location.setUser(appUser);
+        locationRepository.save(location);
     }
 }

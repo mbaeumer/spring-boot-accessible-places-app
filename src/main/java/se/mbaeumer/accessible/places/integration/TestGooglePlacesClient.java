@@ -14,13 +14,16 @@ public class TestGooglePlacesClient implements GooglePlacesClient{
 
     private final GooglePlacesConfiguration googlePlacesConfiguration;
 
-    public TestGooglePlacesClient(WebClient.Builder webClientBuilder, GooglePlacesConfiguration googlePlacesConfiguration) {
+    private final VaultService vaultService;
+
+    public TestGooglePlacesClient(WebClient.Builder webClientBuilder, GooglePlacesConfiguration googlePlacesConfiguration, VaultService vaultService) {
         this.webClient = webClientBuilder.baseUrl("https://places.googleapis.com/v1").build();
         this.googlePlacesConfiguration = googlePlacesConfiguration;
+        this.vaultService = vaultService;
     }
     @Override
     public String fetchApiKey() {
-        return googlePlacesConfiguration.getApiKey();
+        return vaultService.getVault();
     }
 
     public Mono<String> textSearch(String textQuery) {
